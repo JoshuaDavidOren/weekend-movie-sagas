@@ -9,7 +9,6 @@ import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
 function MovieList() {
-    
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -23,6 +22,7 @@ function MovieList() {
     const showMovieDetails = (movie) => {
         console.log('movie detail', movie);
         dispatch({type: 'MOVIE_DETAILS', payload: movie})
+        dispatch({type: 'GET_GENRES', payload: movie})
         history.push(`/details/${movie}`)
 
     }

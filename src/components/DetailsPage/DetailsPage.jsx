@@ -20,8 +20,6 @@ const classes = useStyles();
 const [clickedMovie, setClickedMovie] = useState(0)
 
 useEffect(() => {
-    dispatch({ type: 'FETCH_MOVIES' });
-    dispatch({type: 'GET_GENRES'})
     console.log('interested?', (history.location.pathname));
     // idFromUrl()
     getDetails()
@@ -48,9 +46,9 @@ return(
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>
     <p>{movies[movie-1].description}</p>
-    <p>{movies[movie-1].genra}</p>
-    {genres.map((g)  => {
-        return <span id={g.name}>{g}</span>
+    <p>{movies[movie-1].genres}</p>
+    {genres.map((g, index)  => {
+        return <p key={index}>{g.name}</p>
     })}
     </Paper>
     </section>
