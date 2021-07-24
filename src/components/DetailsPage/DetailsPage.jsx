@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: t
 
 function DetailsPage() {
 
-    const history = useHistory();
+const history = useHistory();
 const movies = useSelector(store => store.movies)
 const dispatch = useDispatch();
 const movie = useSelector(store => store.singleMovieDetails);
@@ -22,6 +22,7 @@ const [clickedMovie, setClickedMovie] = useState(0)
 
 useEffect(() => {
     console.log('interested?', (history.location.pathname));
+    dispatch({type: 'FETCH_MOVIES'})
     // idFromUrl()
 }, []);
 
@@ -37,14 +38,9 @@ useEffect(() => {
 //     getDetails()
 // }
 
-const backToHome = () => {
-    console.log('click');
- history.push('/');   
 
-}
 return(
     <section>
-        <button type='submit' onClick={() => backToHome()}>Back</button>
         <h1>{movies[movie-1].title}</h1>
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>

@@ -6,17 +6,13 @@ import AddMovieForm from '../MovieForm/MovieForm';
 
 function App() {
 
-const history = useHistory();
-
-const addMovie = () => {
-console.log('click');
-history.push(`/addmovieform`)
-}
-
   return (
+    <section>
+    <div class="navbar">
+  <a href="#">Home</a>
+  <a href="#addmovieform">Add Movie</a>
+</div>
     <div className="App">
-      <h1>The Movies Saga!</h1>
-      <button type='submit' onClick={(event) => addMovie()}>Add Movie</button>
       <Router>        
         <Route path="/" exact>
           <MovieList />
@@ -29,6 +25,7 @@ history.push(`/addmovieform`)
         </Route>
       </Router>
     </div>
+    </section>
   );
 }
 
