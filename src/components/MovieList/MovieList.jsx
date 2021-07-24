@@ -4,14 +4,13 @@ import './MovieList.css'
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
 function MovieList() {
     const classes = useStyles();
-    
+    const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
@@ -22,6 +21,9 @@ function MovieList() {
 
     const showMovieDetails = (movie) => {
         console.log('movie detail', movie);
+        dispatch({type: 'MOVIE_DETAILS', payload: movie})
+        history.push(`/details/${movie}`)
+
     }
 
     return (

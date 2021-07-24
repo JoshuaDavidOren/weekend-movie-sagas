@@ -41,7 +41,13 @@ const movies = (state = [], action) => {
             return state;
     }
 }
+const singleMovieDetails = (state = 0, action) => {
+    if(action.type === 'MOVIE_DETAILS'){
+        return state = action.payload;
+    }
+    return state;
 
+}
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -57,6 +63,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        singleMovieDetails,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
