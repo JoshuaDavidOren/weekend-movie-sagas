@@ -32,10 +32,10 @@ function MovieList() {
             <h1>MovieList</h1>
             <section className="movies">
             <Grid container spacing={3}>
-                {movies.map(movie => {
+                {movies.map((movie, index) => {
                     return (
-                        <Grid item style={{height: "450px" }} id={movie.id}>
-                            <Paper className={classes.paper}>
+                        <Grid item style={{height: "450px" }} key={index}>
+                            <Paper  className={classes.paper}>
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title} onClick={() => showMovieDetails(movie.id)}/>

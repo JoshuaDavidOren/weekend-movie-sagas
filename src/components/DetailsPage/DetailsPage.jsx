@@ -47,15 +47,18 @@ return(
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>
     <p>{movies[movie-1].description}</p>
+    </Paper>
     <table>
+        <tbody>
     <tr>
+    <td>Genre:</td>
     {genres.map((g, index)  => {
-        return <p key={index}> {g.name} </p>
+        return <td key={index}> {g.name} </td>
           
     })}
     </tr>
+    </tbody>
     </table>
-    </Paper>
     </section>
 )
 

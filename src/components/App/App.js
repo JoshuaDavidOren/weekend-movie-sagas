@@ -1,13 +1,23 @@
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, useHistory} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList'
 import DetailsPage from '../DetailsPage/DetailsPage';
 import AddMovieForm from '../MovieForm/MovieForm';
 
 function App() {
+
+const history = useHistory();
+
+const addMovie = () => {
+  event.preventDefault();
+console.log('click');
+history.push(`/addmovieform`)
+}
+
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
+      <button onClick={(event) => addMovie()}>Add Movie</button>
       <Router>        
         <Route path="/" exact>
           <MovieList />
@@ -15,7 +25,6 @@ function App() {
         <Route path="/details/:id" exact>
           <DetailsPage />
         </Route>
-        
         <Route path="/addmovieform" exact>
           <AddMovieForm />
         </Route>

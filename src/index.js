@@ -20,7 +20,7 @@ function* rootSaga() {
 
 function* postMovieData(action) {
     try{
-        yield call(axios.post,'/api/movie', action.payload);
+        yield call(axios.post, '/api/movie', action.payload);
     } 
     catch(error) {
         console.log('Error POSTing to database', error);
