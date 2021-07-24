@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import './DetailsPage.css'
 
-
-import './DetailsPage.css';
 
 const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "left", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
@@ -42,10 +42,18 @@ useEffect(() => {
 return(
     <section>
         <h1>{movies[movie-1].title}</h1>
+        <Card>
     <Paper className={classes.paper}>
-    <img src={movies[movie-1].poster}/>
+    <CardMedia
+          className={movies[movie-1].title}
+          component="img"
+          alt={movies[movie-1].title}
+          src={movies[movie-1].poster}
+          title={movies[movie-1].title}
+        />
     <p>{movies[movie-1].description}</p>
     </Paper>
+    </Card>
     <table>
         <tbody>
     <tr>
