@@ -23,7 +23,6 @@ const [clickedMovie, setClickedMovie] = useState(0)
 useEffect(() => {
     console.log('interested?', (history.location.pathname));
     // idFromUrl()
-    getDetails()
 }, []);
 
 
@@ -38,11 +37,14 @@ useEffect(() => {
 //     getDetails()
 // }
 
-const getDetails = () => {
-    
+const backToHome = () => {
+    console.log('click');
+ history.push('/');   
+
 }
 return(
     <section>
+        <button type='submit' onClick={() => backToHome()}>Back</button>
         <h1>{movies[movie-1].title}</h1>
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>

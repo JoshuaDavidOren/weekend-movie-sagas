@@ -23,7 +23,7 @@ function MovieList() {
         console.log('movie detail', movie);
         dispatch({type: 'MOVIE_DETAILS', payload: movie})
         dispatch({type: 'GET_GENRES', payload: movie})
-        history.push(`/details/${movie}`)
+        history.push(`/details`)
 
     }
 

@@ -9,7 +9,6 @@ function App() {
 const history = useHistory();
 
 const addMovie = () => {
-  event.preventDefault();
 console.log('click');
 history.push(`/addmovieform`)
 }
@@ -17,12 +16,12 @@ history.push(`/addmovieform`)
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
-      <button onClick={(event) => addMovie()}>Add Movie</button>
+      <button type='submit' onClick={(event) => addMovie()}>Add Movie</button>
       <Router>        
         <Route path="/" exact>
           <MovieList />
         </Route>
-        <Route path="/details/:id" exact>
+        <Route path="/details" exact>
           <DetailsPage />
         </Route>
         <Route path="/addmovieform" exact>
