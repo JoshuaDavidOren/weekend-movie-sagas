@@ -8,13 +8,23 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', getGenres)
+    yield takeEvery('POST_MOVIE', postMovieData)
+}
+
+function* postMovieData(action) {
+    try{
+        yield call(axios.post,'/api/movie', action.payload);
+    } 
+    catch(error) {
+        console.log('Error POSTing to database', error);
+    }
 }
 
 function* fetchAllMovies() {

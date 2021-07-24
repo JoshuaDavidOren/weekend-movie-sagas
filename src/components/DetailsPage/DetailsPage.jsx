@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from 'react-router-dom';
+import './DetailsPage.css'
 
 
 import './DetailsPage.css';
 
-const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
+const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "left", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
 function DetailsPage() {
 
@@ -46,13 +47,14 @@ return(
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>
     <p>{movies[movie-1].description}</p>
-    <p>{movies[movie-1].genres}</p>
+    <table>
+    <tr>
     {genres.map((g, index)  => {
-        return <div><p key={index}>{g.name}</p><div>
-        <p></p>
-        </div>
-        </div>
+        return <p key={index}> {g.name} </p>
+          
     })}
+    </tr>
+    </table>
     </Paper>
     </section>
 )
