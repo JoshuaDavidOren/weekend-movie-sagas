@@ -15,11 +15,13 @@ function DetailsPage() {
 const movies = useSelector(store => store.movies)
 const dispatch = useDispatch();
 const movie = useSelector(store => store.singleMovieDetails);
+const genres = useSelector(store => store.genres);
 const classes = useStyles();
 const [clickedMovie, setClickedMovie] = useState(0)
 
 useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
+    dispatch({type: 'GET_GENRES'})
     console.log('interested?', (history.location.pathname));
     // idFromUrl()
     getDetails()
@@ -47,6 +49,9 @@ return(
     <img src={movies[movie-1].poster}/>
     <p>{movies[movie-1].description}</p>
     <p>{movies[movie-1].genra}</p>
+    {genres.map((g)  => {
+        return <span id={g.name}>{g}</span>
+    })}
     </Paper>
     </section>
 )
