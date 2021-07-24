@@ -48,7 +48,10 @@ return(
     <p>{movies[movie-1].description}</p>
     <p>{movies[movie-1].genres}</p>
     {genres.map((g, index)  => {
-        return <p key={index}>{g.name}</p>
+        return <div><p key={index}>{g.name}</p><div>
+        <p></p>
+        </div>
+        </div>
     })}
     </Paper>
     </section>
