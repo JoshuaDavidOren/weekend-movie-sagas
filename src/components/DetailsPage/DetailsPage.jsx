@@ -16,12 +16,26 @@ const movies = useSelector(store => store.movies)
 const dispatch = useDispatch();
 const movie = useSelector(store => store.singleMovieDetails);
 const classes = useStyles();
+const [clickedMovie, setClickedMovie] = useState(0)
 
 useEffect(() => {
-    getDetails()
     dispatch({ type: 'FETCH_MOVIES' });
-    console.log('interested?', Number(history.location.pathname));
+    console.log('interested?', (history.location.pathname));
+    // idFromUrl()
+    getDetails()
 }, []);
+
+
+//really trying to get refresh to work
+// const idFromUrl = () => {
+//     console.log(history.location.pathname);
+//     var thestring = history.location.pathname;
+//     var thenum = thestring.replace( /^\D+/g, '')
+//     console.log(Number(thenum));
+//     dispatch({type: 'MOVIE_DETAILS', payload: Number(thenum)});
+//     setClickedMovie(Number(thenum))
+//     getDetails()
+// }
 
 const getDetails = () => {
     
@@ -32,6 +46,7 @@ return(
     <Paper className={classes.paper}>
     <img src={movies[movie-1].poster}/>
     <p>{movies[movie-1].description}</p>
+    <p>{movies[movie-1].genra}</p>
     </Paper>
     </section>
 )
