@@ -4,6 +4,7 @@ import './MovieList.css'
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
@@ -37,9 +38,18 @@ function MovieList() {
                         <Grid item style={{height: "450px" }} key={index}>
                             <Paper  className={classes.paper}>
                         <div key={movie.id} >
-                            <h3>{movie.title}</h3>
+                            
                             <img src={movie.poster} alt={movie.title} onClick={() => showMovieDetails(movie.id)}/>
                         </div>
+                        <Button
+              style={{ width: "88px", height: "40px" }}
+              
+              color="primary"
+              onClick={() => showMovieDetails(movie.id)}
+            >
+              View Details
+            </Button>
+            
                         </Paper>
                 </Grid>
                     ); 
