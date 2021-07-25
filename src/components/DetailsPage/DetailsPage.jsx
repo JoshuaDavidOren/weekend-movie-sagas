@@ -5,10 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from 'react-router-dom';
 import './DetailsPage.css'
 
+const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center",display: "flex", color: theme.palette.text.secondary}}));
 
 import './DetailsPage.css';
-
-const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "left", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
 function DetailsPage() {
 

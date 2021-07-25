@@ -5,9 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
+const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center",display: "flex", color: theme.palette.text.secondary}}));
 
 function MovieList() {
     const classes = useStyles();
@@ -18,6 +19,29 @@ function MovieList() {
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
+
+    
+    const deleteThisAlert = (id) => {
+        Swal.fire({
+        title: 'Are you sure you want to delete this?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: `Don't Delete`,
+        denyButtonText: `Delete`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Cancled Delete', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Deleted', '', 'info')
+          deleteMovie(id);
+        }})
+      }
+
+      const deleteMovie = (id) => {
+
+        dispatch({type: 'DELETE_MOVIE', payload: id})
+    }
 
 
     const showMovieDetails = (movie) => {
@@ -41,14 +65,38 @@ function MovieList() {
                             
                             <img src={movie.poster} alt={movie.title} onClick={() => showMovieDetails(movie.id)}/>
                         </div>
-                        <Button
-              style={{ width: "88px", height: "40px" }}
-              
-              color="primary"
-              onClick={() => showMovieDetails(movie.id)}
-            >
-              View Details
-            </Button>
+                        <table>
+                            <tbody>
+                                <tr><td>
+                                    <Button
+                                              style={{ width: "88px", height: "40px" }}
+                                              variant="contained"
+                                              color="primary"
+                                              onClick={() => showMovieDetails(movie.id)}
+                                            >
+                                              View Details
+                                            </Button>
+                                            </td></tr>
+                                            <tr><td>
+                                    <Button
+                                              style={{ width: "88px", height: "40px" }}
+                                              color="primary"
+                                              onClick={() => showMovieDetails(movie.id)}
+                                            >
+                                              Edit Details
+                                            </Button>
+                                            </td></tr>
+                                            <tr><td>
+                                    <Button
+                                              style={{ width: "88px", height: "40px" }}
+                                              color="alert"
+                                              onClick={() => deleteThisAlert(movie.id)}
+                                            >
+                                              Delete
+                                            </Button>
+                                            </td></tr>
+                            </tbody>
+                        </table>
             
                         </Paper>
                 </Grid>

@@ -17,6 +17,15 @@ function* rootSaga() {
     yield takeEvery('GET_GENRES', getGenres)
     yield takeEvery('POST_MOVIE', postMovieData)
     yield takeEvery('GET_ALL_GENRES', getAllGenres)
+    yield takeEvery('DELETE_MOVIE', deleteMovieData)
+}
+
+function* deleteMovieData(action) {
+    try {yield call(axios.delete, 'api/movie/delete', action.payload);
+    }
+    catch (error) {
+        console.log('Error DELETING from database', error);
+    }
 }
 
 function* postMovieData(action) {
