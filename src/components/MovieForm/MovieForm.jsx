@@ -12,7 +12,7 @@ function AddMovieForm() {
     const [title, setTitle] = useState('');
     const [url, setURL] = useState('');
     const [description, setDescription] = useState('');
-    const [genre, setGenre] = useState('')
+    const [genre, setGenre] = useState(1)
     const genres = useSelector(store => store.genres);
 
     const addMovieData = () => {
@@ -46,27 +46,27 @@ return (
     <tr><td>Description</td></tr>
     <tr><td><textarea value={description} placeholder='Insert Movie Description Here' rows="4" cols="50" onChange={(evt) => setDescription(evt.target.value)}></textarea></td></tr>
     <tr><td> <div class="dropdown">
-  <button class="dropbtn">Genre</button>
+  <div class="dropbtn">Genre</div>
   <div class="dropdown-content">
-    <a onClick={(event) => setGenre(1)} >Adventure</a>
-    <a onClick={(event) => setGenre(2)} >Animated</a>
-    <a onClick={(event) => setGenre(3)} >Biographical</a>
-    <a onClick={(event) => setGenre(4)} >Comedy</a>
-    <a onClick={(event) => setGenre(5)} >Disaster</a>
-    <a onClick={(event) => setGenre(6)} >Drama</a>
-    <a onClick={(event) => setGenre(7)} >Epic</a>
-    <a onClick={(event) => setGenre(8)} >Fantacy</a>
-    <a onClick={(event) => setGenre(9)} >Musical</a>
-    <a onClick={(event) => setGenre(10)} >Romantic</a>
-    <a onClick={(event) => setGenre(11)} >Science Fiction</a>
-    <a onClick={(event) => setGenre(12)} >Space-Opera</a>
-    <a onClick={(event) => setGenre(13)} >Superhero</a>
+    <a onClick={() => setGenre(1)} >Adventure</a>
+    <a onClick={() => setGenre(2)} >Animated</a>
+    <a onClick={() => setGenre(3)} >Biographical</a>
+    <a onClick={() => setGenre(4)} >Comedy</a>
+    <a onClick={() => setGenre(5)} >Disaster</a>
+    <a onClick={() => setGenre(6)} >Drama</a>
+    <a onClick={() => setGenre(7)} >Epic</a>
+    <a onClick={() => setGenre(8)} >Fantacy</a>
+    <a onClick={() => setGenre(9)} >Musical</a>
+    <a onClick={() => setGenre(10)} >Romantic</a>
+    <a onClick={() => setGenre(11)} >Science Fiction</a>
+    <a onClick={() => setGenre(12)} >Space-Opera</a>
+    <a onClick={() => setGenre(13)} >Superhero</a>
   </div>
 </div></td></tr>
     </tbody>
     <tfoot>
         <tr><td><button type='submit' onClick={() => addMovieData()}>Save</button></td></tr>
-        <tr><td><button type='submit' onClick={() => goHome()}>Cancel</button></td></tr>
+        <tr><td><button onClick={() => goHome()}>Cancel</button></td></tr>
     </tfoot>
     </table>
     </form>

@@ -8,7 +8,7 @@ function App() {
 
   return (
     <section>
-    <div class="navbar">
+    <div className="navbar">
   <a href="#">Home</a>
   <a href="#addmovieform">Add Movie</a>
 </div>
@@ -17,7 +17,7 @@ function App() {
         <Route path="/" exact>
           <MovieList />
         </Route>
-        <Route path="/details" exact>
+        <Route path="/details/:id" exact>
           <DetailsPage />
         </Route>
         <Route path="/addmovieform" exact>

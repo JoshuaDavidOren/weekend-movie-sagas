@@ -17,7 +17,7 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({ type: 'FETCH_MOVIES' });              
     }, []);
 
     
@@ -40,7 +40,6 @@ function MovieList() {
 
       const deleteMovie = (id) => {
         dispatch({type: 'DELETE_MOVIE', payload: id})
-        dispatch({type: 'FETCH_MOVIES'})
     }
 
 
@@ -48,7 +47,7 @@ function MovieList() {
         console.log('movie detail', id);
         dispatch({type: 'MOVIE_DETAILS', payload: id})
         dispatch({type: 'GET_GENRES', payload: id})
-        history.push(`/details`)
+        history.push(`/details/${id}`)
 
     }
 
@@ -89,7 +88,7 @@ function MovieList() {
                                             <tr><td>
                                     <Button
                                               style={{ width: "88px", height: "40px" }}
-                                              color="alert"
+                                              color="secondary"
                                               onClick={() => deleteThisAlert(movie.id)}
                                             >
                                               Delete
