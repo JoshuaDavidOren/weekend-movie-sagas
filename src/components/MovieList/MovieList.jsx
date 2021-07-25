@@ -39,15 +39,14 @@ function MovieList() {
       }
 
       const deleteMovie = (id) => {
-
         dispatch({type: 'DELETE_MOVIE', payload: id})
     }
 
 
-    const showMovieDetails = (movie) => {
-        console.log('movie detail', movie);
-        dispatch({type: 'MOVIE_DETAILS', payload: movie})
-        dispatch({type: 'GET_GENRES', payload: movie})
+    const showMovieDetails = (id) => {
+        console.log('movie detail', id);
+        dispatch({type: 'MOVIE_DETAILS', payload: id})
+        dispatch({type: 'GET_GENRES', payload: id})
         history.push(`/details`)
 
     }

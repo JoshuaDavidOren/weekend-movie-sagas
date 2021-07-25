@@ -52,5 +52,25 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
   })
 })
+// router that deletes genres data first then movie data to avoid "violates fk constraint" error
+router.delete('/:id', (req , res) => { 
+  const deleteMovieGenreDataQuery = `DELETE FROM "movies_genres" 
+  WHERE ("movies_genres".movie_id = $1);`;
+  pool.query(deleteMovieGenreDataQuery, [req.params.id])
+  .then( result => {
+    const deleteMovieDataQuery = `DELETE FROM "movies"
+    where "id" = $1;`;
+    pool.query(deleteMovieDataQuery, [req.params.id])
+    .then(result => {
+      res.sendStatus(201);
+    }).catch(error => {
+      console.log('Error movies DELETE',error);
+      res.sendStatus(501)
+    })
+  }).catch(error => {
+    console.log('Error movie_genres DELETE',error);
+    res.sendStatus(500)
+  })
+})
 
 module.exports = router;

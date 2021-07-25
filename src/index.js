@@ -21,7 +21,8 @@ function* rootSaga() {
 }
 
 function* deleteMovieData(action) {
-    try {yield call(axios.delete, 'api/movie/delete', action.payload);
+    console.log(action.payload);
+    try {yield call(axios.delete, `api/movie/${action.payload}`);
     }
     catch (error) {
         console.log('Error DELETING from database', error);
