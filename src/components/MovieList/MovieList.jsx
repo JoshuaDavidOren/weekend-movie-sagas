@@ -40,6 +40,7 @@ function MovieList() {
 
       const deleteMovie = (id) => {
         dispatch({type: 'DELETE_MOVIE', payload: id})
+        dispatch({type: 'FETCH_MOVIES'})
     }
 
 

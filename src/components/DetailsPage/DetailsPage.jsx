@@ -40,11 +40,16 @@ useEffect(() => {
 
 return(
     <section>
-        <h1>{movies[movie-1].title}</h1>
-    <Paper className={classes.paper}>
-    <img src={movies[movie-1].poster}/>
-    <p>{movies[movie-1].description}</p>
-    </Paper>
+        {movies.filter(eachMovie => eachMovie.id === movie).map(info => ( 
+            <>
+              <h1>{info.title}</h1>
+              <Paper className={classes.paper}>
+              <img src={info.poster}/>
+              <p>{info.description}</p>
+              </Paper>
+            </>
+        ))}
+      
     <table>
         <tbody>
     <tr>
