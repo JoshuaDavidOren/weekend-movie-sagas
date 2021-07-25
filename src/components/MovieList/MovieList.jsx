@@ -48,7 +48,13 @@ function MovieList() {
         dispatch({type: 'MOVIE_DETAILS', payload: id})
         dispatch({type: 'GET_GENRES', payload: id})
         history.push(`/details/${id}`)
+    }
 
+    const editMovieDetails = (id) => {
+        console.log('movie detail', id);
+        dispatch({type: 'ONE_MOVIE', payload: id})
+        dispatch({type: 'GET_GENRES', payload: id})
+        history.push(`/edit/${id}`)
     }
 
     return (
@@ -80,7 +86,7 @@ function MovieList() {
                                     <Button
                                               style={{ width: "88px", height: "40px" }}
                                               color="primary"
-                                              onClick={() => showMovieDetails(movie.id)}
+                                              onClick={() => editMovieDetails(movie.id)}
                                             >
                                               Edit Details
                                             </Button>

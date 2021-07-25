@@ -18,7 +18,6 @@ function DetailsPage() {
   
     useEffect(() => {
     console.log('interested?', (history.location.pathname));
-    dispatch({type: 'FETCH_MOVIES'})
     idFromUrl()
 }, []);
 

@@ -18,6 +18,17 @@ function* rootSaga() {
     yield takeEvery('POST_MOVIE', postMovieData)
     yield takeEvery('GET_ALL_GENRES', getAllGenres)
     yield takeEvery('DELETE_MOVIE', deleteMovieData)
+    yield takeEvery('ONE_MOVIE', oneMovie)
+}
+
+function* oneMovie(action) {
+    try{
+        const one = yield axios.get(`/api/onemovie/${action.payload.id}`);
+        console.log('Genres', one.data);
+        yield put({type: 'SET_ONE_MOVIE', payload: one.data })
+    } catch (error) {
+        console.log('Error GETing one movie', error);
+    }
 }
 
 function* deleteMovieData(action) {
@@ -103,9 +114,19 @@ const genres = (state = [], action) => {
     }
 }
 
+const movieToEdit = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_ONE_MOVIE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
+        movieToEdit,
         movies,
         genres,
         singleMovieDetails,
