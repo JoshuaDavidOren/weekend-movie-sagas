@@ -7,6 +7,8 @@ import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({root: {flexGrow: 1},paper: {padding: theme.spacing(2), textAlign: "center", flexwrap: "wrap",display: "flex", color: theme.palette.text.secondary}}));
 
@@ -29,6 +31,8 @@ function MovieList() {
 
     }
 
+    
+
     return (
         <main>
             <h1>MovieList</h1>
@@ -36,26 +40,41 @@ function MovieList() {
             <Grid container spacing={3}>
                 {movies.map((movie, index) => {
                     return (
-                        <Grid movies style={{height: "450px" }} key={index}>
+                        <Grid
+  container
+  direction="row"
+  justifyContent="space-evenly"
+  alignItems="flex-start"
+ key={index}>
                             {/* <Paper  className={classes.paper}>
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title} onClick={() => showMovieDetails(movie.id)}/>
                         </div>
                         </Paper> */}
-                        <Card>
+                        <Card spacing={2}>
           <Paper className={classes.paper}>
           <CardMedia
           className={movie.title}
-          style={{height: '450', width: '350'}}
           component="img"
           alt={movie.title}
           src={movie.poster}
           title={movie.title}
         />
+        <CardActions>
+            <br />
+        <Button
+              style={{ width: "88px", height: "40px" }}
+              variant="contained"
+              onClick={() => showMovieDetails(movie.id)}
+            >
+              View Details
+            </Button>
+        </CardActions>
         </Paper>
           </Card>
                 </Grid>
+                
                     ); 
                 })}
                 
